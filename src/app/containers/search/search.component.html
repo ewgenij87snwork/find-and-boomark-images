@@ -2,6 +2,9 @@
   <mat-label>Find Images</mat-label>
   <input matInput>
 </mat-form-field>
-<ng-container *ngFor="let image of images">
-  <app-image-card [image]="image"></app-image-card>
-</ng-container>
+<mat-grid-list [cols]="columns" rowHeight="400px" gutterSize="30px" (window:resize)="onResize()">
+  <mat-grid-tile *ngFor="let image of images" fxFlexAlign="end">
+    <app-image-card [image]="image"></app-image-card>
+  </mat-grid-tile>
+</mat-grid-list>
+

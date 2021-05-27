@@ -23,7 +23,7 @@ export class ImagesService {
           nojsoncallback: '1',
           media: 'photos',
           per_page: '15',
-          extras: 'tags, url_q',
+          extras: 'tags, url_w',
           api_key: this.apiKey,
         },
       })
