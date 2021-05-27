@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {ImageResponseDto} from '../../rest/image.response.dto';
 
 @Component({
   selector: 'app-image-card',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImageCardComponent implements OnInit {
 
-  constructor() { }
+  @Input() image: ImageResponseDto;
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

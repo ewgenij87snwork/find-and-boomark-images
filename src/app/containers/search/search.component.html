@@ -2,4 +2,6 @@
   <mat-label>Find Images</mat-label>
   <input matInput>
 </mat-form-field>
-<app-image-card></app-image-card>
+<ng-container *ngFor="let image of images">
+  <app-image-card [image]="image"></app-image-card>
+</ng-container>

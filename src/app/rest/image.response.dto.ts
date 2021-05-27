@@ -10,8 +10,10 @@ export class ImageResponseDto {
   isfriend: number;
   isfamily: number;
   tags: string;
+  // tslint:disable-next-line:variable-name
+  url_q: string;
   photos: {
-    photo: ImageResponseDto;
+    photo: ImageResponseDto[];
   };
 
   constructor(data?: ImageResponseDto) {
@@ -25,6 +27,7 @@ export class ImageResponseDto {
     this.isfriend = data.isfriend;
     this.isfamily = data.isfamily;
     this.tags = data.tags;
+    this.url_q = data.url_q;
     this.photos = data.photos;
   }
 }

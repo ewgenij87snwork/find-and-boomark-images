@@ -13,7 +13,7 @@ export class ImagesService {
 
   constructor(private http: HttpClient) {}
 
-  public searchImages(searchTerm: string): Observable<ImageResponseDto> {
+  public searchImages(searchTerm: string): Observable<ImageResponseDto[]> {
     return this.http
       .get<ImageResponseDto>('https://www.flickr.com/services/rest/', {
         params: {
@@ -23,10 +23,10 @@ export class ImagesService {
           nojsoncallback: '1',
           media: 'photos',
           per_page: '15',
-          extras: 'tags',
+          extras: 'tags, url_q',
           api_key: this.apiKey,
         },
       })
-      .pipe(map((response) => response.photos.photo));
+      .pipe(map(response => response.photos.photo));
   }
 }
