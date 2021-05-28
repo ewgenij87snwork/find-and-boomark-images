@@ -1,6 +1,19 @@
 <mat-card>
-  <img src="{{image.url_w}}" class="image" alt="{{image.title}}">
-  <mat-card-actions style="padding:10px">
-    <Button mat-button color="primary" >Bookmark it!</Button>
+  <img
+    class="image"
+    src="{{image.url_w}}"
+    alt="{{image.title}}">
+  <mat-card-actions style="padding: 10px">
+    <button mat-raised-button>Bookmark it!</button>
   </mat-card-actions>
+  <mat-card-content>
+    <mat-chip-list aria-label="Tags">
+      <mat-chip
+        *ngFor="let tag of tags"
+        color="gray"
+        selected>
+        {{tag}}
+      </mat-chip>
+    </mat-chip-list>
+  </mat-card-content>
 </mat-card>

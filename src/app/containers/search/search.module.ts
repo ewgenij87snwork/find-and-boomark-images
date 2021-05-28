@@ -6,7 +6,7 @@ import {SearchComponent} from './search.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {ElementsModule} from '../../components/elements.module';
-import {MatGridListModule} from '@angular/material/grid-list';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatFormFieldModule,
     MatInputModule,
     ElementsModule,
-    MatGridListModule
+    FlexLayoutModule
   ]
 })
 export class SearchModule {
