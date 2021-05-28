@@ -9,11 +9,15 @@ import {ImageResponseDto} from '../../rest/image.response.dto';
 export class ImageCardComponent implements OnInit {
 
   @Input() image: ImageResponseDto;
+  public tags: string[];
 
   constructor() {
   }
 
   ngOnInit(): void {
+    this.tags = this.image.tags
+      .split(' ')
+      .filter(tag => tag.length < 7)
+      .splice(0, 4);
   }
-
 }
