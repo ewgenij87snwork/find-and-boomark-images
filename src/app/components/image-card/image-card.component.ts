@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ImageResponseDto} from '../../rest/image.response.dto';
+import {ImagesService} from '../../rest/images.service';
 
 @Component({
   selector: 'app-image-card',
@@ -7,11 +8,11 @@ import {ImageResponseDto} from '../../rest/image.response.dto';
   styleUrls: ['./image-card.component.scss']
 })
 export class ImageCardComponent implements OnInit {
-
   @Input() image: ImageResponseDto;
+  @Input() bookmarkIt: boolean;
   public tags: string[];
 
-  constructor() {
+  constructor(private imagesService: ImagesService) {
   }
 
   ngOnInit(): void {
@@ -19,5 +20,14 @@ export class ImageCardComponent implements OnInit {
       .split(' ')
       .filter(tag => tag.length < 7)
       .splice(0, 4);
+  }
+
+
+  public onAddBookmark(): void {
+    this.imagesService.saveBookmark(this.image);
+  }
+
+  public onRemoveBookmark(): void {
+    this.imagesService.removeBookmark(this.image);
   }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {LocalStorage} from 'ngx-webstorage';
 
 @Component({
   selector: 'app-bookmarks',
@@ -6,8 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bookmarks.component.scss']
 })
 export class BookmarksComponent implements OnInit {
+  @LocalStorage()
+  bookmarks;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
