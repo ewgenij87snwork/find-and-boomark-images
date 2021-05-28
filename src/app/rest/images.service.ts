@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
 import {ImageResponseDto} from './image.response.dto';
-import {LocalStorage, LocalStorageService} from 'ngx-webstorage';
+import { LocalStorageService} from 'ngx-webstorage';
 
 @Injectable({
   providedIn: 'root'
@@ -13,29 +13,30 @@ export class ImagesService {
   private apiKey = environment.apiKey;
   private bookmarksArray: ImageResponseDto[] = [];
 
+  public bookmarks = 'bookmarks';
+
   constructor(
     private http: HttpClient,
     private storageService?: LocalStorageService) {
   }
 
-  @LocalStorage()
-  private bookmarks: 'bookmarks';
-
   public saveBookmark(image: ImageResponseDto): void {
+    this.bookmarksArray = this.storageService.retrieve(this.bookmarks);
     if (!this.bookmarksArray.find(existImage => existImage === image)) {
       this.bookmarksArray.push(image);
     }
 
-    this.storageService.store('bookmarks', this.bookmarksArray);
+    this.storageService.store(this.bookmarks, this.bookmarksArray);
   }
 
   public removeBookmark(image: ImageResponseDto): void {
     this.storageService.clear(this.bookmarks);
     this.storageService.store(this.bookmarks, this.bookmarksArray.filter(bookmark => bookmark !== image));
+    this.retrieveBookmarks();
   }
 
-  retrieveBookmarks(): void {
-    this.bookmarksArray = this.storageService.retrieve(this.bookmarks);
+  retrieveBookmarks(): ImageResponseDto[] {
+    return this.bookmarksArray = this.storageService.retrieve(this.bookmarks);
   }
 
   public searchImages(searchTerm: string): Observable<ImageResponseDto[]> {

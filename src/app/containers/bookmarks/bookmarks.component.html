@@ -1,1 +1,5 @@
-<p>bookmarks works!</p>
+<div fxLayout="row wrap" fxLayoutGap="20px grid">
+  <div *ngFor="let image of images" fxFlex.lg="25%" fxFlex.md="33%" fxFlex.sm="50%" fxFlex.xs="100%">
+    <app-image-card [image]="image" ></app-image-card>
+  </div>
+</div>
