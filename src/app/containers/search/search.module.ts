@@ -7,6 +7,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {ElementsModule} from '../../components/elements.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {NgxMasonryModule} from 'ngx-masonry';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MatFormFieldModule,
     MatInputModule,
     ElementsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    NgxMasonryModule
   ]
 })
 export class SearchModule {
