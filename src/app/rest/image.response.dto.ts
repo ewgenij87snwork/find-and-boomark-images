@@ -4,7 +4,7 @@ export class ImageResponseDto {
   title: string;
   tags: string;
   // tslint:disable-next-line:variable-name
-  url_q: string;
+  url_w: string;
   photos: {
     photo: ImageResponseDto[];
   };
@@ -13,7 +13,7 @@ export class ImageResponseDto {
     this.id = data.id;
     this.title = data.title;
     this.tags = data.tags;
-    this.url_q = data.url_q;
+    this.url_w = data.url_w;
     this.photos = data.photos;
   }
 }

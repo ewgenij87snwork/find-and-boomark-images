@@ -1,3 +1,16 @@
 <mat-card>
-  <img src="{{image.url_q}}" alt="{{image.title}}">
+  <img src="{{image.url_w}}" alt="{{image.title}}">
+  <mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button>Bookmark it!</button>
+    </mat-card-actions>
+    <mat-chip-list aria-label="Tags">
+      <mat-chip
+        *ngFor="let tag of image.tags.split(' ').splice(0, 3)"
+        color="gray"
+        selected>
+        {{tag}}
+      </mat-chip>
+    </mat-chip-list>
+  </mat-card-content>
 </mat-card>
