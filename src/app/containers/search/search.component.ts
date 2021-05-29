@@ -20,6 +20,9 @@ export class SearchComponent implements OnInit {
   constructor(private imagesService: ImagesService) {}
 
   ngOnInit(): void {
+    this.imagesService.searchImages('sun', 2)
+      .subscribe(images => this.images = images);
+
     fromEvent(this.searchInput.nativeElement, 'keyup')
       .pipe(
         map((event: any) => event.target.value),

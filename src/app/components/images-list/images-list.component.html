@@ -1,0 +1,13 @@
+<div
+  fxLayout="row wrap"
+  fxLayoutGap=" grid"
+  fxLayoutAlign="space-evenly start" >
+  <div
+    *ngFor="let image of images"
+    fxFlex.lg="25%"
+    fxFlex.md="33%"
+    fxFlex.sm="50%"
+    fxFlex.xs="100%">
+    <app-image-card [image]="image" [bookmarkIt]="true"></app-image-card>
+  </div>
+</div>
