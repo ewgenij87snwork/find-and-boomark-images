@@ -15,11 +15,15 @@ export class BookmarksComponent implements OnInit {
   @LocalStorage('bookmarks')
   bookmarksArray;
 
-  constructor(private imagesService: ImagesService, private storageService: LocalStorageService) {
+  constructor(
+    private imagesService: ImagesService,
+    private storageService: LocalStorageService) {
   }
 
   ngOnInit(): void {
-    this.storageService.observe('bookmarks').subscribe(bookmarks => this.images = bookmarks);
+    this.storageService.observe('bookmarks')
+      .subscribe(bookmarks => this.images = bookmarks);
+
     this.images = this.bookmarksArray;
   }
 }

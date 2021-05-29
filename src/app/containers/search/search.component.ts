@@ -1,28 +1,32 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ImagesService} from '../../rest/images.service';
 import {ImageResponseDto} from '../../rest/image.response.dto';
-import {LocalStorage} from 'ngx-webstorage';
+import {fromEvent} from 'rxjs';
+import {debounceTime, map} from 'rxjs/operators';
+import {NgModel} from '@angular/forms';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  styleUrls: ['./search.component.scss'],
+  providers: [NgModel]
 })
 export class SearchComponent implements OnInit {
+
   images: ImageResponseDto[];
-  columns: number;
 
-  @LocalStorage('bookmarks')
-  bookmarksArray;
+  @ViewChild('searchInput', {static: true}) searchInput!: ElementRef;
 
-
-  constructor(private imagesService: ImagesService) {
-  }
+  constructor(private imagesService: ImagesService) {}
 
   ngOnInit(): void {
-    this.imagesService.searchImages('moon').subscribe(images => {
-      this.images = images;
-    });
-    this.images = this.bookmarksArray;
+    fromEvent(this.searchInput.nativeElement, 'keyup')
+      .pipe(
+        map((event: any) => event.target.value),
+        debounceTime(1500))
+      .subscribe((searchTerm: string) => {
+        this.imagesService.searchImages(searchTerm)
+          .subscribe(images => this.images = images);
+      });
   }
 }

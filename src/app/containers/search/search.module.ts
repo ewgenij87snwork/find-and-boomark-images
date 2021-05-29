@@ -7,19 +7,21 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {ElementsModule} from '../../components/elements.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     SearchComponent
   ],
-  imports: [
-    CommonModule,
-    SearchRoutingModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ElementsModule,
-    FlexLayoutModule
-  ]
+    imports: [
+        CommonModule,
+        SearchRoutingModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ElementsModule,
+        FlexLayoutModule,
+        FormsModule
+    ]
 })
 export class SearchModule {
 }
