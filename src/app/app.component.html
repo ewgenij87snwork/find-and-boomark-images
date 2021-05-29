@@ -1,11 +1,31 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav class="sidenav" mode="side" opened>
+  <mat-sidenav
+    class="sidenav"
+    mode="side"
+    opened>
     <div class="sidenav__buttons">
-      <button mat-button routerLink="/">
-        <mat-icon class="sidenav__button" aria-hidden="false" aria-label="Search Page">cloud</mat-icon>
+      <button
+        mat-button
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">
+        <mat-icon
+          class="sidenav__button"
+          aria-hidden="false"
+          aria-label="Search Page">
+          cloud
+        </mat-icon>
       </button>
-      <button mat-button routerLink="/bookmarks">
-        <mat-icon class="sidenav__button"  aria-hidden="false" aria-label="Bookmarks">bookmarks</mat-icon>
+      <button
+        mat-button
+        routerLink="/bookmarks"
+        routerLinkActive="active">
+        <mat-icon
+          class="sidenav__button"
+          aria-hidden="false"
+          aria-label="Bookmarks">
+          bookmarks
+        </mat-icon>
       </button>
     </div>
   </mat-sidenav>
