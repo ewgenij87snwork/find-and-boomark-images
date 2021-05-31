@@ -8,53 +8,54 @@ import {LocalStorageService} from 'ngx-webstorage';
 import {ImagesResponseDto} from './images.response.dto';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class ImagesService {
-    private apiKey = environment.apiKey;
-    private bookmarksArray: ImageDto[] = [];
+  private apiKey = environment.apiKey;
+  private bookmarksArray: ImageDto[] = [];
 
-    public bookmarks = 'bookmarks';
+  public bookmarks = 'bookmarks';
 
-    constructor(
-        private http: HttpClient,
-        private storageService?: LocalStorageService) {
+  constructor(
+    private http: HttpClient,
+    private storageService?: LocalStorageService) {
+  }
+
+  public saveBookmark(image: ImageDto): void {
+    const storedBookmarks = this.storageService.retrieve(this.bookmarks);
+
+    if (storedBookmarks !== null && !storedBookmarks.find(existImage => existImage === image)) {
+      this.bookmarksArray.push(image);
+      const buffer = this.bookmarksArray;
+      this.storageService.store(this.bookmarks, buffer);
     }
+  }
 
-    public saveBookmark(image: ImageDto): void {
-        this.bookmarksArray = this.storageService.retrieve(this.bookmarks);
-        if (!this.bookmarksArray.find(existImage => existImage === image)) {
-            this.bookmarksArray.push(image);
-        }
+  public removeBookmark(image: ImageDto): void {
+    this.storageService.clear(this.bookmarks);
+    this.storageService.store(this.bookmarks, this.bookmarksArray.filter(bookmark => bookmark !== image));
+    this.retrieveBookmarks();
+  }
 
-        this.storageService.store(this.bookmarks, this.bookmarksArray);
-    }
+  retrieveBookmarks(): ImageDto[] {
+    return this.bookmarksArray = this.storageService.retrieve(this.bookmarks);
+  }
 
-    public removeBookmark(image: ImageDto): void {
-        this.storageService.clear(this.bookmarks);
-        this.storageService.store(this.bookmarks, this.bookmarksArray.filter(bookmark => bookmark !== image));
-        this.retrieveBookmarks();
-    }
-
-    retrieveBookmarks(): ImageDto[] {
-        return this.bookmarksArray = this.storageService.retrieve(this.bookmarks);
-    }
-
-    public searchImages(searchTerm: string, page = 1, perpage = 20): Observable<ImagesResponseDto> {
-        return this.http
-            .get<ImagesResponseDto>('https://www.flickr.com/services/rest/', {
-                params: {
-                    tags: searchTerm,
-                    method: 'flickr.photos.search',
-                    format: 'json',
-                    nojsoncallback: '1',
-                    media: 'photos',
-                    per_page: perpage.toString(),
-                    page: page.toString(),
-                    extras: 'tags, url_w',
-                    api_key: this.apiKey,
-                },
-            })
-            .pipe(map(response => response.photos));
-    }
+  public searchImages(searchTerm: string, page = 1, perpage = 20): Observable<ImagesResponseDto> {
+    return this.http
+      .get<ImagesResponseDto>('https://www.flickr.com/services/rest/', {
+        params: {
+          tags: searchTerm,
+          method: 'flickr.photos.search',
+          format: 'json',
+          nojsoncallback: '1',
+          media: 'photos',
+          per_page: perpage.toString(),
+          page: page.toString(),
+          extras: 'tags, url_w',
+          api_key: this.apiKey,
+        },
+      })
+      .pipe(map(response => response.photos));
+  }
 }
