@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ImageResponseDto} from '../../rest/image.response.dto';
+import {ImageDto} from '../../rest/image.dto';
 import {ImagesService} from '../../rest/images.service';
 
 @Component({
@@ -8,7 +8,7 @@ import {ImagesService} from '../../rest/images.service';
   styleUrls: ['./image-card.component.scss']
 })
 export class ImageCardComponent implements OnInit {
-  @Input() image: ImageResponseDto;
+  @Input() image: ImageDto;
   @Input() bookmarkIt: boolean;
   public tags: string[];
 

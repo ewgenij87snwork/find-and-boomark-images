@@ -8,20 +8,22 @@ import {MatInputModule} from '@angular/material/input';
 import {ElementsModule} from '../../components/elements.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FormsModule} from '@angular/forms';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
     SearchComponent
   ],
-    imports: [
-        CommonModule,
-        SearchRoutingModule,
-        MatFormFieldModule,
-        MatInputModule,
-        ElementsModule,
-        FlexLayoutModule,
-        FormsModule
-    ]
+  imports: [
+    CommonModule,
+    SearchRoutingModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ElementsModule,
+    FlexLayoutModule,
+    FormsModule,
+    MatPaginatorModule
+  ]
 })
 export class SearchModule {
 }

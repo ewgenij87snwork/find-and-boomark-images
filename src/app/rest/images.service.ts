@@ -3,15 +3,16 @@ import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
-import {ImageResponseDto} from './image.response.dto';
+import {ImageDto} from './image.dto';
 import {LocalStorageService} from 'ngx-webstorage';
+import {ImagesResponseDto} from './images.response.dto';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ImagesService {
     private apiKey = environment.apiKey;
-    private bookmarksArray: ImageResponseDto[] = [];
+    private bookmarksArray: ImageDto[] = [];
 
     public bookmarks = 'bookmarks';
 
@@ -20,7 +21,7 @@ export class ImagesService {
         private storageService?: LocalStorageService) {
     }
 
-    public saveBookmark(image: ImageResponseDto): void {
+    public saveBookmark(image: ImageDto): void {
         this.bookmarksArray = this.storageService.retrieve(this.bookmarks);
         if (!this.bookmarksArray.find(existImage => existImage === image)) {
             this.bookmarksArray.push(image);
@@ -29,19 +30,19 @@ export class ImagesService {
         this.storageService.store(this.bookmarks, this.bookmarksArray);
     }
 
-    public removeBookmark(image: ImageResponseDto): void {
+    public removeBookmark(image: ImageDto): void {
         this.storageService.clear(this.bookmarks);
         this.storageService.store(this.bookmarks, this.bookmarksArray.filter(bookmark => bookmark !== image));
         this.retrieveBookmarks();
     }
 
-    retrieveBookmarks(): ImageResponseDto[] {
+    retrieveBookmarks(): ImageDto[] {
         return this.bookmarksArray = this.storageService.retrieve(this.bookmarks);
     }
 
-    public searchImages(searchTerm: string, page = 1): Observable<ImageResponseDto[]> {
+    public searchImages(searchTerm: string, page = 1): Observable<ImagesResponseDto> {
         return this.http
-            .get<ImageResponseDto>('https://www.flickr.com/services/rest/', {
+            .get<ImagesResponseDto>('https://www.flickr.com/services/rest/', {
                 params: {
                     tags: searchTerm,
                     method: 'flickr.photos.search',
@@ -54,9 +55,6 @@ export class ImagesService {
                     api_key: this.apiKey,
                 },
             })
-            .pipe(map(response => {
-                console.log(response);
-                return response.photos.photo;
-            }));
+            .pipe(map(response => response.photos));
     }
 }

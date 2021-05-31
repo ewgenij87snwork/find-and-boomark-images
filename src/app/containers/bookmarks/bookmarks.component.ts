@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ImageResponseDto} from '../../rest/image.response.dto';
+import {ImageDto} from '../../rest/image.dto';
 import {ImagesService} from '../../rest/images.service';
 import {LocalStorage, LocalStorageService} from 'ngx-webstorage';
 
@@ -10,7 +10,7 @@ import {LocalStorage, LocalStorageService} from 'ngx-webstorage';
 })
 export class BookmarksComponent implements OnInit {
 
-  images: ImageResponseDto[];
+  images: ImageDto[];
 
   @LocalStorage('bookmarks')
   bookmarksArray;

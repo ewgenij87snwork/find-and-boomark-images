@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ImageResponseDto} from '../../rest/image.response.dto';
+import {ImageDto} from '../../rest/image.dto';
 
 @Component({
   selector: 'app-images-list',
@@ -7,7 +7,7 @@ import {ImageResponseDto} from '../../rest/image.response.dto';
   styleUrls: ['./images-list.component.scss']
 })
 export class ImagesListComponent implements OnInit {
-  @Input() images: ImageResponseDto[];
+  @Input() images: ImageDto[];
 
   constructor() {
   }
