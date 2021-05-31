@@ -4,10 +4,17 @@
     matInput
     #searchInput>
 </mat-form-field>
-<!--<mat-paginator [length]="12"-->
-<!--               [pageSize]="20"-->
-<!--               [pageSizeOptions]="pageSizeOptions"-->
-<!--               (page)="pageEvent = onPagination($event)">-->
-<!--</mat-paginator>-->
-<app-images-list [images]="images"></app-images-list>
+<ng-container *ngIf="imagesData">
+  <ng-container [ngTemplateOutlet]="paginator"></ng-container>
+  <app-images-list [images]="imagesData.photo"></app-images-list>
+  <ng-container [ngTemplateOutlet]="paginator"></ng-container>
+</ng-container>
 
+<ng-template #paginator>
+  <mat-paginator [length]="length"
+                 [pageSize]="pageSize"
+                 [pageIndex]="pageIndex"
+                 [pageSizeOptions]="pageSizeOptions"
+                 (page)="pageEvent = initImages($event)">
+  </mat-paginator>
+</ng-template>

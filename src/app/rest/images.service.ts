@@ -40,7 +40,7 @@ export class ImagesService {
         return this.bookmarksArray = this.storageService.retrieve(this.bookmarks);
     }
 
-    public searchImages(searchTerm: string, page = 1): Observable<ImagesResponseDto> {
+    public searchImages(searchTerm: string, page = 1, perpage = 20): Observable<ImagesResponseDto> {
         return this.http
             .get<ImagesResponseDto>('https://www.flickr.com/services/rest/', {
                 params: {
@@ -49,7 +49,7 @@ export class ImagesService {
                     format: 'json',
                     nojsoncallback: '1',
                     media: 'photos',
-                    per_page: '15',
+                    per_page: perpage.toString(),
                     page: page.toString(),
                     extras: 'tags, url_w',
                     api_key: this.apiKey,
