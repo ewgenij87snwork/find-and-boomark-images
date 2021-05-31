@@ -1,9 +1,15 @@
 mat-card {
   margin: 10px;
-}
-mat-card img{
-  object-fit: cover;
-  width: 100%;
-  height: 80%;
-  min-height: 300px;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 400px;
+  }
+
+  mat-chip.tag {
+    color: #fff;
+    opacity: 1;
+    background-color: #769e74;
+  }
 }

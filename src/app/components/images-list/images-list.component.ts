@@ -8,6 +8,7 @@ import {ImageDto} from '../../rest/image.dto';
 })
 export class ImagesListComponent implements OnInit {
   @Input() images: ImageDto[];
+  @Input() bookmarkIt: boolean;
 
   constructor() {
   }

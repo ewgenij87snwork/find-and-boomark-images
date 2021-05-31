@@ -1,15 +1,3 @@
-<mat-form-field appearance="fill">
-  <mat-label>Find Images</mat-label>
-  <input
-    matInput
-    #searchInput>
-</mat-form-field>
-<ng-container *ngIf="imagesData">
-  <ng-container [ngTemplateOutlet]="paginator"></ng-container>
-  <app-images-list [images]="imagesData.photo"></app-images-list>
-  <ng-container [ngTemplateOutlet]="paginator"></ng-container>
-</ng-container>
-
 <ng-template #paginator>
   <mat-paginator [length]="length"
                  [pageSize]="pageSize"
@@ -18,3 +6,16 @@
                  (page)="pageEvent = initImages($event)">
   </mat-paginator>
 </ng-template>
+
+<mat-form-field appearance="fill">
+  <mat-label>Find Images</mat-label>
+  <input
+    matInput
+    #searchInput>
+</mat-form-field>
+<ng-container *ngIf="imagesData">
+  <ng-container [ngTemplateOutlet]="paginator"></ng-container>
+  <app-images-list [images]="imagesData.photo" [bookmarkIt]="true"></app-images-list>
+  <ng-container [ngTemplateOutlet]="paginator"></ng-container>
+</ng-container>
+
