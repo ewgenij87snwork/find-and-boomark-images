@@ -14,7 +14,7 @@
     matInput
     #searchInput>
 </mat-form-field>
-<ng-container *ngIf="imagesData">
+<ng-container *ngIf="imagesData.photo.length > 1">
   <ng-container [ngTemplateOutlet]="paginator"></ng-container>
   <app-images-list [images]="imagesData.photo" [bookmarkIt]="true"></app-images-list>
   <ng-container [ngTemplateOutlet]="paginator"></ng-container>
