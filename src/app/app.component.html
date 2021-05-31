@@ -1,11 +1,18 @@
 <mat-toolbar class="toolbar">
+  <button mat-icon-button *ngIf="sidenav && sidenav.mode === 'over'" (click)="sidenav.toggle()">
+    <mat-icon *ngIf="!sidenav.opened">
+      menu
+    </mat-icon>
+    <mat-icon *ngIf="sidenav.opened">
+      close
+    </mat-icon>
+  </button>
   Find & Bookmark Image
 </mat-toolbar>
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav
-    class="mat-elevation-z8"
-    mode="side"
-    opened>
+    #sidenav="matSidenav"
+    class="mat-elevation-z8">
     <div class="sidenav__buttons">
       <button
         mat-button
@@ -36,6 +43,6 @@
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
-<mat-toolbar class="toolbar">
+<mat-toolbar class="toolbar footer">
   @copyright
 </mat-toolbar>

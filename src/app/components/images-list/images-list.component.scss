@@ -1,4 +1,8 @@
 .image-list {
   padding-left: 20px;
-
+}
+@media (max-width: 900px) {
+  .image-list {
+    padding-left: 0;
+  }
 }

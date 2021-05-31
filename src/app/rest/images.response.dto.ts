@@ -7,6 +7,7 @@ export class ImagesResponseDto {
   pages: number;
   photo: ImageDto[];
   photos: ImagesResponseDto;
+  total: number;
 
 
   constructor(data?: ImagesResponseDto) {
@@ -16,6 +17,7 @@ export class ImagesResponseDto {
       this.pages = data.pages;
       this.photo = data.photo;
       this.photos = data.photos;
+      this.total = data.total;
     }
   }
 }

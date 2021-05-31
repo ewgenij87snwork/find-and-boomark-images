@@ -39,3 +39,9 @@ mat-sidenav {
   background: rgba(37, 89, 134, 0.75);
   color: #fff;
 }
+@media (max-width: 600px) {
+
+.footer {
+  height: 72px;
+}
+}

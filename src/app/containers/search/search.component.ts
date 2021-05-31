@@ -35,7 +35,8 @@ export class SearchComponent implements OnInit {
     if (this.searchTerm.length > 1) {
       this.imagesService.searchImages(this.searchTerm, event?.pageIndex, event?.pageSize)
         .subscribe(res => {
-          this.length = res.pages;
+          console.log(res);
+          this.length = res.total;
           this.pageSize = res.perpage;
           this.pageIndex = res.page;
           this.imagesData = res;
