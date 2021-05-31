@@ -2,3 +2,11 @@
   display: flex;
   flex-direction: column;
 }
+mat-form-field{
+  .input{
+    padding-left: 10px;
+  }
+  .label {
+    padding-left: 10px;
+  }
+}
