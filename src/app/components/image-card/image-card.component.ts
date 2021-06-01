@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ImageDto} from '../../rest/image.dto';
+
 import {ImagesService} from '../../rest/images.service';
+import {ImageDto} from '../../rest/image.dto';
 
 @Component({
   selector: 'app-image-card',
@@ -21,7 +22,6 @@ export class ImageCardComponent implements OnInit {
       .filter(tag => tag.length < 7)
       .splice(0, 4);
   }
-
 
   public onAddBookmark(): void {
     this.imagesService.saveBookmark(this.image);

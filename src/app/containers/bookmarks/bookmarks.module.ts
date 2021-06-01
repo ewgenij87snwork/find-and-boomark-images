@@ -8,9 +8,7 @@ import {ElementsModule} from '../../components/elements.module';
 
 
 @NgModule({
-  declarations: [
-    BookmarksComponent
-  ],
+  declarations: [BookmarksComponent],
   imports: [
     CommonModule,
     BookmarksRoutingModule,

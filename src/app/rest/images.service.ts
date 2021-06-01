@@ -1,10 +1,13 @@
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
-import {map} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
-import {ImageDto} from './image.dto';
+
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+
 import {LocalStorageService} from 'ngx-webstorage';
+
+import {ImageDto} from './image.dto';
 import {ImagesResponseDto} from './images.response.dto';
 
 @Injectable({
@@ -13,7 +16,6 @@ import {ImagesResponseDto} from './images.response.dto';
 export class ImagesService {
   private apiKey = environment.apiKey;
   private bookmarksArray: ImageDto[] = [];
-
   public bookmarks = 'bookmarks';
 
   constructor(

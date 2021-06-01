@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./containers/search/search.module').then(m => m.SearchModule)
-  },{
+  }, {
     path: 'bookmarks',
     loadChildren: () => import('./containers/bookmarks/bookmarks.module').then(m => m.BookmarksModule)
   }

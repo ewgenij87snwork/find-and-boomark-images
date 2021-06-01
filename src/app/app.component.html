@@ -1,5 +1,8 @@
 <mat-toolbar class="toolbar">
-  <button mat-icon-button *ngIf="sidenav && sidenav.mode === 'over'" (click)="sidenav.toggle()">
+  <button
+    *ngIf="sidenav && sidenav.mode === 'over'"
+    (click)="sidenav.toggle()"
+    mat-icon-button>
     <mat-icon *ngIf="!sidenav.opened">
       menu
     </mat-icon>
@@ -15,10 +18,10 @@
     class="mat-elevation-z8">
     <div class="sidenav__buttons">
       <button
-        mat-button
         routerLink="/"
         routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }">
+        [routerLinkActiveOptions]="{ exact: true }"
+        mat-button>
         <mat-icon
           class="sidenav__button"
           aria-hidden="false"
@@ -27,9 +30,9 @@
         </mat-icon>
       </button>
       <button
-        mat-button
         routerLink="/bookmarks"
-        routerLinkActive="active">
+        routerLinkActive="active"
+        mat-button>
         <mat-icon
           class="sidenav__button"
           aria-hidden="false"
@@ -39,7 +42,7 @@
       </button>
     </div>
   </mat-sidenav>
-  <mat-sidenav-content class="content mat-elevation-z8" >
+  <mat-sidenav-content class="content mat-elevation-z8">
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

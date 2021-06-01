@@ -1,6 +1,8 @@
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
-import {MatSidenav} from '@angular/material/sidenav';
+
 import {BreakpointObserver} from '@angular/cdk/layout';
+
+import {MatSidenav} from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +10,7 @@ import {BreakpointObserver} from '@angular/cdk/layout';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements AfterViewInit{
-  title = 'Image Finder';
+  public title = 'Image Finder';
 
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;

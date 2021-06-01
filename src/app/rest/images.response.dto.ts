@@ -9,7 +9,6 @@ export class ImagesResponseDto {
   photos: ImagesResponseDto;
   total: number;
 
-
   constructor(data?: ImagesResponseDto) {
     if (data) {
       this.page = data.page;

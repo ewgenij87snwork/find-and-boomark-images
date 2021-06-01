@@ -1,14 +1,17 @@
 <div
   class="image-list"
   fxLayout="row wrap"
-  fxLayoutGap=" grid"
-  fxLayoutAlign="space-evenly start" >
+  fxLayoutGap="grid"
+  fxLayoutAlign="space-evenly start">
   <div
     *ngFor="let image of images"
     fxFlex.xl="25%"
     fxFlex.lg="33%"
     fxFlex.md="50%"
     fxFlex.xs="100%">
-      <app-image-card [image]="image" [bookmarkIt]="!!bookmarkIt"></app-image-card>
+    <app-image-card
+      [image]="image"
+      [bookmarkIt]="!!bookmarkIt">
+    </app-image-card>
   </div>
 </div>

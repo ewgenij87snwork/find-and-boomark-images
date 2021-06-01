@@ -4,16 +4,25 @@
     src="{{image.url_w}}"
     alt="{{image.title}}">
   <mat-card-actions style="padding: 10px">
-    <button mat-raised-button *ngIf="bookmarkIt" (click)="onAddBookmark()">Bookmark it!</button>
-    <button mat-raised-button *ngIf="!bookmarkIt" (click)="onRemoveBookmark()">Remove Bookmark</button>
+    <button
+      *ngIf="bookmarkIt"
+      (click)="onAddBookmark()"
+      mat-raised-button>
+      Bookmark it!
+    </button>
+    <button
+      *ngIf="!bookmarkIt"
+      (click)="onRemoveBookmark()"
+      mat-raised-button>
+      Remove Bookmark
+    </button>
   </mat-card-actions>
   <mat-card-content>
     <mat-chip-list aria-label="Tags">
       <mat-chip
         *ngFor="let tag of tags"
         class="tag"
-        disabled
-        >
+        disabled>
         {{tag}}
       </mat-chip>
     </mat-chip-list>

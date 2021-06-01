@@ -1,4 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
+
 import {ImageDto} from '../../rest/image.dto';
 
 @Component({
@@ -6,14 +7,7 @@ import {ImageDto} from '../../rest/image.dto';
   templateUrl: './images-list.component.html',
   styleUrls: ['./images-list.component.scss']
 })
-export class ImagesListComponent implements OnInit {
+export class ImagesListComponent {
   @Input() images: ImageDto[];
   @Input() bookmarkIt: boolean;
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
-
 }
