@@ -24,19 +24,16 @@ export class ImagesService {
   }
 
   public saveBookmark(image: ImageDto): void {
-    const storedBookmarks = this.storageService.retrieve(this.bookmarks);
-
-    if (storedBookmarks !== null && !storedBookmarks.find(existImage => existImage === image)) {
+    this.retrieveBookmarks();
+    if (this.bookmarksArray !== null && !this.bookmarksArray.find(existImage => existImage === image)) {
       this.bookmarksArray.push(image);
-      const buffer = this.bookmarksArray;
-      this.storageService.store(this.bookmarks, buffer);
+      this.storageService.store(this.bookmarks, this.bookmarksArray);
     }
   }
 
   public removeBookmark(image: ImageDto): void {
-    this.storageService.clear(this.bookmarks);
-    this.storageService.store(this.bookmarks, this.bookmarksArray.filter(bookmark => bookmark !== image));
     this.retrieveBookmarks();
+    this.storageService.store(this.bookmarks, this.bookmarksArray.filter(bookmark => bookmark !== image));
   }
 
   retrieveBookmarks(): ImageDto[] {

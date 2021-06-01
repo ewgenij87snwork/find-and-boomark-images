@@ -3,7 +3,6 @@ import {Component, OnInit} from '@angular/core';
 import {LocalStorage, LocalStorageService} from 'ngx-webstorage';
 
 import {ImageDto} from '../../rest/image.dto';
-import {ImagesService} from '../../rest/images.service';
 
 @Component({
   selector: 'app-bookmarks',
@@ -15,9 +14,7 @@ export class BookmarksComponent implements OnInit {
   @LocalStorage('bookmarks')
   bookmarksArray;
 
-  constructor(
-    private imagesService: ImagesService,
-    private storageService: LocalStorageService) {
+  constructor(private storageService: LocalStorageService) {
   }
 
   ngOnInit(): void {

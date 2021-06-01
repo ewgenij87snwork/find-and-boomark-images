@@ -12,4 +12,8 @@ mat-card {
     opacity: 1;
     background: rgba(37, 89, 134, 0.5);
   }
+
+  mat-card-actions {
+    padding: 10px
+  }
 }
