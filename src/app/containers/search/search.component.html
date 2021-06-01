@@ -1,12 +1,3 @@
-<ng-template #paginator>
-  <mat-paginator [length]="length"
-                 [pageSize]="pageSize"
-                 [pageSizeOptions]="pageSizeOptions"
-                 [showFirstLastButtons]=true
-                 (page)="pageEvent = initImages($event)">
-  </mat-paginator>
-</ng-template>
-
 <mat-form-field appearance="fill">
   <mat-label class="label">Find Images</mat-label>
   <input
@@ -15,8 +6,25 @@
     #searchInput>
 </mat-form-field>
 <ng-container *ngIf="imagesData?.photo.length > 1">
-  <ng-container [ngTemplateOutlet]="paginator"></ng-container>
-  <app-images-list [images]="imagesData.photo" [bookmarkIt]="true"></app-images-list>
-  <ng-container [ngTemplateOutlet]="paginator"></ng-container>
+  <mat-paginator
+    #paginatorTop
+    [length]="length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    [showFirstLastButtons]=true
+    (page)="pageEvent = initImages($event); paginatorBottom.pageIndex = $event.pageIndex">
+  </mat-paginator>
+  <app-images-list
+    [images]="imagesData.photo"
+    [bookmarkIt]="true">
+  </app-images-list>
+  <mat-paginator
+    #paginatorBottom
+    [length]="length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    [showFirstLastButtons]=true
+    (page)="pageEvent = initImages($event); paginatorTop.pageIndex = $event.pageIndex">
+  </mat-paginator>
 </ng-container>
 

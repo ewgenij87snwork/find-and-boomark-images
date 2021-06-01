@@ -12,16 +12,16 @@ import {ImagesResponseDto} from '../../rest/images.response.dto';
   styleUrls: ['./search.component.scss'],
   providers: [NgModel]
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit{
   length: number;
   pageSize: number;
   pageIndex: number;
   pageSizeOptions: number[] = [20, 50, 100];
   imagesData: ImagesResponseDto;
   searchTerm = '';
+  pageEvent: PageEvent;
 
   @ViewChild('searchInput', {static: true}) searchInput!: ElementRef;
-  pageEvent: PageEvent;
 
   constructor(private imagesService: ImagesService) {
   }
@@ -32,10 +32,10 @@ export class SearchComponent implements OnInit {
   }
 
   initImages(event?: PageEvent): PageEvent {
-    if (this.searchTerm.length > 1) {
+    if (this.searchTerm.length > 1)
+    {
       this.imagesService.searchImages(this.searchTerm, event?.pageIndex, event?.pageSize)
         .subscribe(res => {
-          console.log(res);
           this.length = res.total;
           this.pageSize = res.perpage;
           this.pageIndex = res.page;
