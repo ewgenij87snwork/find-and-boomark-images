@@ -24,6 +24,7 @@ export class ImagesService {
   }
 
   public saveBookmark(image: ImageDto): void {
+    this.storageService.store(this.bookmarks, this.bookmarksArray);
     this.retrieveBookmarks();
     if (this.bookmarksArray !== null && !this.bookmarksArray.find(existImage => existImage === image)) {
       this.bookmarksArray.push(image);

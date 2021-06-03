@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, ViewChild} from '@angular/core';
 
 import {BreakpointObserver} from '@angular/cdk/layout';
 
@@ -7,15 +7,17 @@ import {MatSidenav} from '@angular/material/sidenav';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit{
+export class AppComponent implements AfterViewInit {
   public title = 'Image Finder';
 
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
 
-  constructor(private observer: BreakpointObserver) {
+  constructor(
+    private observer: BreakpointObserver,
+    private cdRef: ChangeDetectorRef) {
   }
 
   ngAfterViewInit(): void {
@@ -28,5 +30,6 @@ export class AppComponent implements AfterViewInit{
         this.sidenav.open();
       }
     });
+    this.cdRef.detectChanges();
   }
 }

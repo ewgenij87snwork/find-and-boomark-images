@@ -120,6 +120,7 @@ class ImagesService {
         this.bookmarks = 'bookmarks';
     }
     saveBookmark(image) {
+        this.storageService.store(this.bookmarks, this.bookmarksArray);
         this.retrieveBookmarks();
         if (this.bookmarksArray !== null && !this.bookmarksArray.find(existImage => existImage === image)) {
             this.bookmarksArray.push(image);

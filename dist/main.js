@@ -95,8 +95,9 @@ function AppComponent_button_1_Template(rf, ctx) { if (rf & 1) {
 } }
 const _c0 = function () { return { exact: true }; };
 class AppComponent {
-    constructor(observer) {
+    constructor(observer, cdRef) {
         this.observer = observer;
+        this.cdRef = cdRef;
         this.title = 'Image Finder';
     }
     ngAfterViewInit() {
@@ -110,9 +111,10 @@ class AppComponent {
                 this.sidenav.open();
             }
         });
+        this.cdRef.detectChanges();
     }
 }
-AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_cdk_layout__WEBPACK_IMPORTED_MODULE_2__["BreakpointObserver"])); };
+AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_cdk_layout__WEBPACK_IMPORTED_MODULE_2__["BreakpointObserver"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"])); };
 AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], viewQuery: function AppComponent_Query(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵviewQuery"](_angular_material_sidenav__WEBPACK_IMPORTED_MODULE_0__["MatSidenav"], 1);
     } if (rf & 2) {
